@@ -16,12 +16,13 @@ let img
 protocol.registerStandardSchemes(['app'], { secure: true })
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({ width: 800, height: 600, webPreferences: { webSecurity: false } })
-  img = new BrowserWindow({ width: 400, height: 400 })
+  win = new BrowserWindow({ width: 1000, height: 700, webPreferences: { webSecurity: false } })
+  // img = new BrowserWindow({ width: 400, height: 400, parent: window, show: false })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
+    // img.loadURL(process.env.WEBPACK_DEV_SERVER_URL + '/#/image')
     if (!process.env.IS_TEST) win.webContents.openDevTools()
   } else {
     createProtocol('app')
